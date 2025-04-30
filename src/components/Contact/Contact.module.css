@@ -18,3 +18,8 @@
     font-size: 18px;
     padding: 7px 7px;
 }
+
+.contactItem {
+    display: flex;  
+    gap: 5px;
+}
