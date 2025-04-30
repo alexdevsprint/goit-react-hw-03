@@ -6,14 +6,18 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 768px;
+    max-width: 400px;
     padding: 0 32px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    max-width: 1158px;
+    max-width: 500px;
     padding: 0 32px;
   }    
+}
+
+.title {
+  margin-bottom: 20px;
 }
