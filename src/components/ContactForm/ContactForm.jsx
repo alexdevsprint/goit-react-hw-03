@@ -13,8 +13,7 @@ export default function ContactForm({ addContact }) {
     number: "",
   };
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+  const handleSubmit = (values, actions) => {   
     addContact({
       id: nanoid(),
       name: values.name,
