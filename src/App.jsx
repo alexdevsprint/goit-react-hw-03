@@ -1,12 +1,13 @@
 import { useState } from "react";
 import css from "./App.module.css";
 
-import Contact from "./components/Contact/Contact";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 
 export default function App() {
+  const [inputValue, setInputValue] = useState("");
+
   const [contacts, setContacts] = useState([
     { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
     { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
@@ -14,12 +15,20 @@ export default function App() {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ]);
 
+  function updateInputValue(value) {
+    setInputValue(value);
+  }
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
   return (
     <div className={css.container}>
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <SearchBox inputValue={inputValue} updateInputValue={updateInputValue} />
+      <ContactList contacts={filteredContacts} />
     </div>
   );
 }
