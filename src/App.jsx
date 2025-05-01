@@ -19,6 +19,11 @@ export default function App() {
     setInputValue(value);
   }
 
+  function addContact(newContact) {
+    
+    setContacts([...contacts, newContact]);   
+  }
+
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -26,7 +31,7 @@ export default function App() {
   return (
     <div className={css.container}>
       <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
+      <ContactForm addContact={addContact} />
       <SearchBox inputValue={inputValue} updateInputValue={updateInputValue} />
       <ContactList contacts={filteredContacts} />
     </div>
