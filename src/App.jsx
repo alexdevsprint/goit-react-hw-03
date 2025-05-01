@@ -24,6 +24,12 @@ export default function App() {
     setContacts([...contacts, newContact]);   
   }
 
+  function deleteContact(id) {
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== id)
+    );
+  }
+
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -33,7 +39,7 @@ export default function App() {
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm addContact={addContact} />
       <SearchBox inputValue={inputValue} updateInputValue={updateInputValue} />
-      <ContactList contacts={filteredContacts} />
+      <ContactList contacts={filteredContacts} deleteContact={deleteContact}/>
     </div>
   );
 }
